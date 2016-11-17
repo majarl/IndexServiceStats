@@ -13,6 +13,8 @@
 		5B34111A1D9D68E900240927 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3411181D9D68E900240927 /* Main.storyboard */; };
 		5B3411251D9D68E900240927 /* IndexServiceStatCollectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3411241D9D68E900240927 /* IndexServiceStatCollectorTests.swift */; };
 		5B3411301D9D68E900240927 /* IndexServiceStatCollectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34112F1D9D68E900240927 /* IndexServiceStatCollectorUITests.swift */; };
+		5B34113E1D9D694800240927 /* IndexServiceConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B34113D1D9D694800240927 /* IndexServiceConsumer.swift */; };
+		5B38C3841DC8D00A00327077 /* CollectionStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B38C3831DC8D00A00327077 /* CollectionStats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		5B34112B1D9D68E900240927 /* IndexServiceStatCollectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndexServiceStatCollectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B34112F1D9D68E900240927 /* IndexServiceStatCollectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexServiceStatCollectorUITests.swift; sourceTree = "<group>"; };
 		5B3411311D9D68E900240927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B34113D1D9D694800240927 /* IndexServiceConsumer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexServiceConsumer.swift; sourceTree = "<group>"; };
+		5B38C3831DC8D00A00327077 /* CollectionStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionStats.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +101,11 @@
 			children = (
 				5B3411121D9D68E900240927 /* AppDelegate.swift */,
 				5B3411141D9D68E900240927 /* ViewController.swift */,
+				5B38C3831DC8D00A00327077 /* CollectionStats.swift */,
 				5B3411161D9D68E900240927 /* Assets.xcassets */,
 				5B3411181D9D68E900240927 /* Main.storyboard */,
 				5B34111B1D9D68E900240927 /* Info.plist */,
+				5B34113D1D9D694800240927 /* IndexServiceConsumer.swift */,
 			);
 			path = IndexServiceStatCollector;
 			sourceTree = "<group>";
@@ -185,7 +191,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Martin Agersted Jarl";
 				TargetAttributes = {
 					5B34110E1D9D68E900240927 = {
@@ -257,6 +263,8 @@
 			files = (
 				5B3411151D9D68E900240927 /* ViewController.swift in Sources */,
 				5B3411131D9D68E900240927 /* AppDelegate.swift in Sources */,
+				5B34113E1D9D694800240927 /* IndexServiceConsumer.swift in Sources */,
+				5B38C3841DC8D00A00327077 /* CollectionStats.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +329,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -370,6 +379,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -496,6 +506,7 @@
 				5B3411361D9D68E900240927 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B3411371D9D68E900240927 /* Build configuration list for PBXNativeTarget "IndexServiceStatCollectorTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +515,7 @@
 				5B3411391D9D68E900240927 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B34113A1D9D68E900240927 /* Build configuration list for PBXNativeTarget "IndexServiceStatCollectorUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +524,7 @@
 				5B34113C1D9D68E900240927 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
