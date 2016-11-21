@@ -17,6 +17,16 @@ struct CollectionStats {
     var dropped: Int
     var timestamp: Double
     
+    init(collectionId: String, processing: Int, indexed: Int, removed: Int, error: Int, dropped: Int, timestamp: Double) {
+        self.collectionId = collectionId
+        self.processing = processing
+        self.indexed = indexed
+        self.removed = removed
+        self.error = error
+        self.dropped = dropped
+        self.timestamp = timestamp
+    }
+    
     init?(data: Data) {
         guard
             let jsonObj = try? JSONSerialization.jsonObject(with: data, options: []),
