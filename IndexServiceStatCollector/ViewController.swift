@@ -20,6 +20,12 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         }
     }
     
+    
+    private func mockStatData() {
+        self.statSerie.append(CollectionStats(collectionId: "TestCollection", processing: 2, indexed: 2, removed: 2, error: 2, dropped: 2, timestamp: 2.3))
+    }
+    
+    
     @IBOutlet weak var endpointUrl: NSTextField! {
         didSet {
             print("Setting")
@@ -41,7 +47,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.endpointUrl.stringValue = DefaultEndpoints.nirasEndPoint02_docweb
+//        self.mockStatData()
     }
+    
 
     override var representedObject: Any? {
         didSet {
@@ -104,31 +112,27 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         return self.statSerie.count
     }
 
-    
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        print("\(#function): Identifier: \(tableColumn?.identifier)")
+        if let c = tableView.make(withIdentifier: "C_time", owner: nil) as? NSTableCellView,
+            let tc = tableColumn {
 
-        let value: CollectionStats = self.statSerie[row]
-
-        if let colIdent = tableColumn?.identifier {
-            let cellIdent : String = {
-                switch colIdent {
-                case "COL_TIME": return "CELL_TIME"
-                case "COL_PROCESSING": return "CELL_PROCESSING"
-                case "COL_INDEXED": return "CELL_INDEXED"
-                case "COL_REMOVED": return "CELL_REMOVED"
-                case "COL_ERROR": return "CELL_ERROR"
-                default: return ""
+            let cs = self.statSerie[row]
+            let val: String = {
+                switch tc.identifier {
+                case "COL_time": return "\(cs.humanDate)"
+                case "COL_processing": return "\(cs.processing)"
+                case "COL_indexed": return "\(cs.indexed)"
+                case "COL_removed": return "\(cs.removed)"
+                case "COL_error": return "\(cs.error)"
+                default: return "Nada"
                 }
             }()
             
-            if let cell = tableView.make(withIdentifier: cellIdent, owner: self) as? NSTableCellView {
-                cell.textField?.stringValue = "Noget"
-                return cell
-            }
+            c.textField?.stringValue = val
+            return c
         }
         
-
         return nil
     }
     
