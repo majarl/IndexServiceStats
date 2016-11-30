@@ -16,6 +16,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             print("\(#function): didSet")
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
+                if self.numberOfRows(in: self.mainTableView) > 0 {
+                    self.mainTableView.scrollRowToVisible(self.numberOfRows(in: self.mainTableView) - 1)
+                }
             }
         }
     }
