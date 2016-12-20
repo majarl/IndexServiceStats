@@ -140,7 +140,41 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        print("\(#function) - \(#line)")
+        
+        if let tview: NSTableView = notification.object as? NSTableView {
+            let itemsSelected = tview.selectedRowIndexes.count
+            if itemsSelected > 0 {
+                putRowsToPasteboard(selectedRows: tview.selectedRowIndexes)
+            }
+        }
+    }
+    
+    
 
+    // MARK: - Copying and Selecting
+    
+    func putRowsToPasteboard(selectedRows: IndexSet) {
+        let pboard = NSPasteboard.general()
+
+        for idx in selectedRows {
+            
+        }
+        
+        
+        pboard.declareTypes([NSStringPboardType], owner: nil)
+        let r = pboard.writeObjects(["Noget fra programmet" as NSPasteboardWriting])
+    }
+    
+    
+    func copy(_ sender: AnyObject?) {
+        print("\(#function): \(#line) - ")
+        print("    \(sender)")
+        
+    }
+    
+    
     
     
 
