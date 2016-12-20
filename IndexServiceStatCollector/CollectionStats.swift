@@ -17,6 +17,17 @@ struct CollectionStats {
     var dropped: Int
     var timestamp: Double
     
+    static let headers = [
+        "collectionId",
+        "processing",
+        "indexed",
+        "removed",
+        "error",
+        "dropped",
+        "timestamp"
+    ]
+    
+    
     init(collectionId: String, processing: Int, indexed: Int, removed: Int, error: Int, dropped: Int, timestamp: Double) {
         self.collectionId = collectionId
         self.processing = processing
@@ -63,6 +74,21 @@ struct CollectionStats {
     
     var onlineDesc: String {
         return "\(collectionId) : t = \(humanDate) p = \(processing), i = \(indexed), r = \(removed), e = \(error)"
+    }
+    
+    public func csvHeaders(delimiter: String) -> String {
+        var out: String = ""
+        for (index, header) in CollectionStats.headers.enumerated() {
+            out += header
+            if index < CollectionStats.headers.count-1 {
+                out += "\(delimiter) "
+            }
+        }
+        return out + "\n"
+    }
+    
+    var csvValues: String {
+        return "\(collectionId); \(humanDate); \(processing); \(indexed); \(removed); \(error)\n"
     }
 }
 

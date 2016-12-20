@@ -159,7 +159,8 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         let pboard = NSPasteboard.general()
 
         for idx in selectedRows {
-            
+            let se = self.statSerie[idx].csvValues
+            print(se)
         }
         
         
