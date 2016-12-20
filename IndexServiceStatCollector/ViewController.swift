@@ -26,6 +26,8 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     private func mockStatData() {
         self.statSerie.append(CollectionStats(collectionId: "TestCollection", processing: 2, indexed: 2, removed: 2, error: 2, dropped: 2, timestamp: 2.3))
+        self.statSerie.append(CollectionStats(collectionId: "TestCollection", processing: 12, indexed: 2, removed: 2, error: 2, dropped: 2, timestamp: 2.5))
+        self.statSerie.append(CollectionStats(collectionId: "TestCollection", processing: 45, indexed: 2, removed: 2, error: 2, dropped: 2, timestamp: 2.8))
     }
     
     
@@ -50,7 +52,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.endpointUrl.stringValue = DefaultEndpoints.nirasEndPoint02_docweb
-//        self.mockStatData()
+        // self.mockStatData()
     }
     
 
@@ -141,8 +143,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        print("\(#function) - \(#line)")
-        
         if let tview: NSTableView = notification.object as? NSTableView {
             let itemsSelected = tview.selectedRowIndexes.count
             if itemsSelected > 0 {
@@ -156,16 +156,19 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     // MARK: - Copying and Selecting
     
     func putRowsToPasteboard(selectedRows: IndexSet) {
-        let pboard = NSPasteboard.general()
-
+        var pbText: String = CollectionStats.csvHeaders(delimiter: ";")
         for idx in selectedRows {
-            let se = self.statSerie[idx].csvValues
-            print(se)
+            pbText += self.statSerie[idx].csvValues(delimiter: ";")
+            print(pbText)
         }
-        
-        
+
+        let pboard = NSPasteboard.general()
         pboard.declareTypes([NSStringPboardType], owner: nil)
-        let r = pboard.writeObjects(["Noget fra programmet" as NSPasteboardWriting])
+        if pboard.writeObjects([pbText as NSPasteboardWriting]) {
+            print("\(#function) : \(#line) - Copied to PasteBoard")
+        } else {
+            print("\(#function) : \(#line) - Warning: No copying")
+        }
     }
     
     

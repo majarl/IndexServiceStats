@@ -76,7 +76,7 @@ struct CollectionStats {
         return "\(collectionId) : t = \(humanDate) p = \(processing), i = \(indexed), r = \(removed), e = \(error)"
     }
     
-    public func csvHeaders(delimiter: String) -> String {
+    static public func csvHeaders(delimiter: String) -> String {
         var out: String = ""
         for (index, header) in CollectionStats.headers.enumerated() {
             out += header
@@ -87,9 +87,13 @@ struct CollectionStats {
         return out + "\n"
     }
     
-    var csvValues: String {
-        return "\(collectionId); \(humanDate); \(processing); \(indexed); \(removed); \(error)\n"
+    public func csvValues(delimiter: String) -> String {
+        return "\(collectionId)\(delimiter) \(humanDate)\(delimiter) \(processing)\(delimiter) \(indexed)\(delimiter) \(removed)\(delimiter) \(error)\n"
     }
+    
+    
+    
+    
 }
 
 
