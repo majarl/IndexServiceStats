@@ -14,19 +14,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-//        let isc = IndexServiceConsumer(indexServiceUrl: URL(string: "http://allkfw02:8080/rest/docweb_documents/summary.json")!)
-//        isc.load(resource: isc.summaryResource) { (result) in
-//            print(result ?? "No value")
-//            let sRep: String = String(data: result!, encoding: String.Encoding.utf8)!
-//            print(sRep)
-//        }
-        
-        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
+    
+    
+    @IBAction func saveDotDotDot(sender: AnyObject) {
+    }
+    
+    @IBAction func save(sender: AnyObject) {
+        print("\(#function)")
+    }
+    
+    
 
 
 }

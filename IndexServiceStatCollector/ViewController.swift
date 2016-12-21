@@ -37,6 +37,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         }
     }
     
+    @IBOutlet weak var startStopButton: NSButton!
     
     @IBAction func indexServiceEndpointUrlCanged(_ sender: Any) {
         print("\(#function): \(self.endpointUrl.stringValue)")
@@ -64,26 +65,42 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     
     var repeater: Timer?
-    var counter = 0
+    var counter = -1
     
     @IBAction func startReadStatsLoop(_ sender: Any) {
         print("startReadStatsLoop")
         retrieveStats()
         
-        if self.repeater != nil {
-            self.repeater?.invalidate()
+        if self.counter == -1 { // Not running
             counter = 0
+
+            if self.repeater != nil {
+                self.repeater?.invalidate()
+            }
+            
+            self.repeater = Timer(timeInterval: 10, repeats: true, block: { (timer) in
+                self.counter += 1
+                self.retrieveStats()
+            })
+            
+            let rl: RunLoop = RunLoop.current
+            rl.add(self.repeater!, forMode: RunLoopMode.defaultRunLoopMode)
+            self.startStopButton.title = "Stop"
+        } else {
+            print("Already running")
+            if self.repeater != nil {
+                self.repeater?.invalidate()
+            }
+            self.startStopButton.title = "Start sampling"
         }
         
-        self.repeater = Timer(timeInterval: 10, repeats: true, block: { (timer) in
-            self.counter += 1
-            self.retrieveStats()
-        })
         
-        let rl: RunLoop = RunLoop.current
-        rl.add(self.repeater!, forMode: RunLoopMode.defaultRunLoopMode)
+        
     }
 
+    @IBAction func resetStats(_ sender: NSButton) {
+        self.statSerie.removeAll()
+    }
     
     @IBAction func readStatsAction(_ sender: NSButton) {
         retrieveStats()
@@ -176,6 +193,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         print("\(#function): \(#line) - ")
         print("    \(sender)")
         
+    }
+    
+    
+    // MARK: - Saving
+    
+    @IBAction func saveStatSerie(sender: AnyObject) {
+        print("\(#function)")
     }
     
     
