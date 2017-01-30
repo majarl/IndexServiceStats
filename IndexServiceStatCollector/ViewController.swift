@@ -16,7 +16,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             print("\(#function): didSet")
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
-                if self.numberOfRows(in: self.mainTableView) > 0 {
+                if self.numberOfRows(in: self.mainTableView) > 0 && self.followCheck.state == 1 {
                     self.mainTableView.scrollRowToVisible(self.numberOfRows(in: self.mainTableView) - 1)
                 }
             }
@@ -38,6 +38,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     @IBOutlet weak var startStopButton: NSButton!
+    
+    @IBOutlet weak var followCheck: NSButton!
+    
+    @IBAction func followCheckAction(_ sender: Any) {
+        print("\(#function) state = \(self.followCheck.state)")
+    }
+    
     
     @IBAction func indexServiceEndpointUrlCanged(_ sender: Any) {
         print("\(#function): \(self.endpointUrl.stringValue)")
