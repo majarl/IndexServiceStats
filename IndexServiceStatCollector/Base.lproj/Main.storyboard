@@ -755,6 +755,17 @@
                                                 <real value="3.4028234663852886e+38"/>
                                             </customSpacing>
                                         </stackView>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOY-N1-U9t">
+                                            <rect key="frame" x="572" y="21" width="61" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Follow" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cZs-uw-ced">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="followCheckAction:" target="XfG-lQ-9wD" id="F4u-kS-8eX"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="9us-dF-McV" firstAttribute="centerY" secondItem="FJv-Z8-8Zq" secondAttribute="centerY" id="118-rf-ar4"/>
@@ -982,6 +993,7 @@
                     </view>
                     <connections>
                         <outlet property="endpointUrl" destination="rTc-CI-U3w" id="GFb-qE-9ob"/>
+                        <outlet property="followCheck" destination="kOY-N1-U9t" id="vMZ-xS-OxQ"/>
                         <outlet property="mainTableView" destination="wah-8W-o4V" id="NiN-wK-SeC"/>
                         <outlet property="startStopButton" destination="LEd-jm-GtV" id="kZA-9j-uOd"/>
                     </connections>
